@@ -1,0 +1,261 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\redae\\Desktop\\Device_ManagementAPI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E7662BC3-553E-4A59-B36C-4EC30634E744}|Device_ManagementAPI.csproj|c:\\users\\redae\\desktop\\device_managementapi\\devices\\features\\handlers\\updatedevicecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E7662BC3-553E-4A59-B36C-4EC30634E744}|Device_ManagementAPI.csproj|solutionrelative:devices\\features\\handlers\\updatedevicecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E7662BC3-553E-4A59-B36C-4EC30634E744}|Device_ManagementAPI.csproj|c:\\users\\redae\\desktop\\device_managementapi\\devices\\features\\handlers\\getdevicebyidqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E7662BC3-553E-4A59-B36C-4EC30634E744}|Device_ManagementAPI.csproj|solutionrelative:devices\\features\\handlers\\getdevicebyidqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E7662BC3-553E-4A59-B36C-4EC30634E744}|Device_ManagementAPI.csproj|c:\\users\\redae\\desktop\\device_managementapi\\devices\\features\\queries\\getdevicebyidquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E7662BC3-553E-4A59-B36C-4EC30634E744}|Device_ManagementAPI.csproj|solutionrelative:devices\\features\\queries\\getdevicebyidquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E7662BC3-553E-4A59-B36C-4EC30634E744}|Device_ManagementAPI.csproj|c:\\users\\redae\\desktop\\device_managementapi\\devices\\features\\queries\\getalldevicesquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E7662BC3-553E-4A59-B36C-4EC30634E744}|Device_ManagementAPI.csproj|solutionrelative:devices\\features\\queries\\getalldevicesquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E7662BC3-553E-4A59-B36C-4EC30634E744}|Device_ManagementAPI.csproj|c:\\users\\redae\\desktop\\device_managementapi\\models\\device.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E7662BC3-553E-4A59-B36C-4EC30634E744}|Device_ManagementAPI.csproj|solutionrelative:models\\device.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E7662BC3-553E-4A59-B36C-4EC30634E744}|Device_ManagementAPI.csproj|c:\\users\\redae\\desktop\\device_managementapi\\devices\\features\\handlers\\deletedevicecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E7662BC3-553E-4A59-B36C-4EC30634E744}|Device_ManagementAPI.csproj|solutionrelative:devices\\features\\handlers\\deletedevicecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E7662BC3-553E-4A59-B36C-4EC30634E744}|Device_ManagementAPI.csproj|c:\\users\\redae\\desktop\\device_managementapi\\devices\\features\\handlers\\getalldevicesqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E7662BC3-553E-4A59-B36C-4EC30634E744}|Device_ManagementAPI.csproj|solutionrelative:devices\\features\\handlers\\getalldevicesqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E7662BC3-553E-4A59-B36C-4EC30634E744}|Device_ManagementAPI.csproj|c:\\users\\redae\\desktop\\device_managementapi\\devices\\features\\handlers\\createdevicecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E7662BC3-553E-4A59-B36C-4EC30634E744}|Device_ManagementAPI.csproj|solutionrelative:devices\\features\\handlers\\createdevicecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E7662BC3-553E-4A59-B36C-4EC30634E744}|Device_ManagementAPI.csproj|c:\\users\\redae\\desktop\\device_managementapi\\settings\\mongodbsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E7662BC3-553E-4A59-B36C-4EC30634E744}|Device_ManagementAPI.csproj|solutionrelative:settings\\mongodbsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E7662BC3-553E-4A59-B36C-4EC30634E744}|Device_ManagementAPI.csproj|c:\\users\\redae\\desktop\\device_managementapi\\controllers\\valuescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E7662BC3-553E-4A59-B36C-4EC30634E744}|Device_ManagementAPI.csproj|solutionrelative:controllers\\valuescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E7662BC3-553E-4A59-B36C-4EC30634E744}|Device_ManagementAPI.csproj|c:\\users\\redae\\desktop\\device_managementapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E7662BC3-553E-4A59-B36C-4EC30634E744}|Device_ManagementAPI.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E7662BC3-553E-4A59-B36C-4EC30634E744}|Device_ManagementAPI.csproj|c:\\users\\redae\\desktop\\device_managementapi\\devices\\features\\commands\\deletedevicecommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E7662BC3-553E-4A59-B36C-4EC30634E744}|Device_ManagementAPI.csproj|solutionrelative:devices\\features\\commands\\deletedevicecommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E7662BC3-553E-4A59-B36C-4EC30634E744}|Device_ManagementAPI.csproj|c:\\users\\redae\\desktop\\device_managementapi\\devices\\features\\commands\\updatedevicecommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E7662BC3-553E-4A59-B36C-4EC30634E744}|Device_ManagementAPI.csproj|solutionrelative:devices\\features\\commands\\updatedevicecommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E7662BC3-553E-4A59-B36C-4EC30634E744}|Device_ManagementAPI.csproj|c:\\users\\redae\\desktop\\device_managementapi\\devices\\features\\commands\\createdevicecommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E7662BC3-553E-4A59-B36C-4EC30634E744}|Device_ManagementAPI.csproj|solutionrelative:devices\\features\\commands\\createdevicecommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E7662BC3-553E-4A59-B36C-4EC30634E744}|Device_ManagementAPI.csproj|c:\\users\\redae\\desktop\\device_managementapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{E7662BC3-553E-4A59-B36C-4EC30634E744}|Device_ManagementAPI.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UpdateDeviceCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\redae\\Desktop\\Device_ManagementAPI\\Devices\\Features\\Handlers\\UpdateDeviceCommandHandler.cs",
+              "RelativeDocumentMoniker": "Devices\\Features\\Handlers\\UpdateDeviceCommandHandler.cs",
+              "ToolTip": "C:\\Users\\redae\\Desktop\\Device_ManagementAPI\\Devices\\Features\\Handlers\\UpdateDeviceCommandHandler.cs",
+              "RelativeToolTip": "Devices\\Features\\Handlers\\UpdateDeviceCommandHandler.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAkwCkAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-26T18:31:25.323Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GetDeviceByIdQueryHandler.cs",
+              "DocumentMoniker": "C:\\Users\\redae\\Desktop\\Device_ManagementAPI\\Devices\\Features\\Handlers\\GetDeviceByIdQueryHandler.cs",
+              "RelativeDocumentMoniker": "Devices\\Features\\Handlers\\GetDeviceByIdQueryHandler.cs",
+              "ToolTip": "C:\\Users\\redae\\Desktop\\Device_ManagementAPI\\Devices\\Features\\Handlers\\GetDeviceByIdQueryHandler.cs",
+              "RelativeToolTip": "Devices\\Features\\Handlers\\GetDeviceByIdQueryHandler.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAA0wBkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-26T18:32:46.458Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "GetDeviceByIdQuery.cs",
+              "DocumentMoniker": "C:\\Users\\redae\\Desktop\\Device_ManagementAPI\\Devices\\Features\\Queries\\GetDeviceByIdQuery.cs",
+              "RelativeDocumentMoniker": "Devices\\Features\\Queries\\GetDeviceByIdQuery.cs",
+              "ToolTip": "C:\\Users\\redae\\Desktop\\Device_ManagementAPI\\Devices\\Features\\Queries\\GetDeviceByIdQuery.cs",
+              "RelativeToolTip": "Devices\\Features\\Queries\\GetDeviceByIdQuery.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-26T18:29:54.779Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "GetAllDevicesQuery.cs",
+              "DocumentMoniker": "C:\\Users\\redae\\Desktop\\Device_ManagementAPI\\Devices\\Features\\Queries\\GetAllDevicesQuery.cs",
+              "RelativeDocumentMoniker": "Devices\\Features\\Queries\\GetAllDevicesQuery.cs",
+              "ToolTip": "C:\\Users\\redae\\Desktop\\Device_ManagementAPI\\Devices\\Features\\Queries\\GetAllDevicesQuery.cs",
+              "RelativeToolTip": "Devices\\Features\\Queries\\GetAllDevicesQuery.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-26T18:29:38.596Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Device.cs",
+              "DocumentMoniker": "C:\\Users\\redae\\Desktop\\Device_ManagementAPI\\Models\\Device.cs",
+              "RelativeDocumentMoniker": "Models\\Device.cs",
+              "ToolTip": "C:\\Users\\redae\\Desktop\\Device_ManagementAPI\\Models\\Device.cs",
+              "RelativeToolTip": "Models\\Device.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAuwA4AAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-26T18:25:25.085Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DeleteDeviceCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\redae\\Desktop\\Device_ManagementAPI\\Devices\\Features\\Handlers\\DeleteDeviceCommandHandler.cs",
+              "RelativeDocumentMoniker": "Devices\\Features\\Handlers\\DeleteDeviceCommandHandler.cs",
+              "ToolTip": "C:\\Users\\redae\\Desktop\\Device_ManagementAPI\\Devices\\Features\\Handlers\\DeleteDeviceCommandHandler.cs",
+              "RelativeToolTip": "Devices\\Features\\Handlers\\DeleteDeviceCommandHandler.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAASwBYAAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-26T18:31:47.625Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "GetAllDevicesQueryHandler.cs",
+              "DocumentMoniker": "C:\\Users\\redae\\Desktop\\Device_ManagementAPI\\Devices\\Features\\Handlers\\GetAllDevicesQueryHandler.cs",
+              "RelativeDocumentMoniker": "Devices\\Features\\Handlers\\GetAllDevicesQueryHandler.cs",
+              "ToolTip": "C:\\Users\\redae\\Desktop\\Device_ManagementAPI\\Devices\\Features\\Handlers\\GetAllDevicesQueryHandler.cs",
+              "RelativeToolTip": "Devices\\Features\\Handlers\\GetAllDevicesQueryHandler.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAzwBkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-26T18:32:22.722Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "CreateDeviceCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\redae\\Desktop\\Device_ManagementAPI\\Devices\\Features\\Handlers\\CreateDeviceCommandHandler.cs",
+              "RelativeDocumentMoniker": "Devices\\Features\\Handlers\\CreateDeviceCommandHandler.cs",
+              "ToolTip": "C:\\Users\\redae\\Desktop\\Device_ManagementAPI\\Devices\\Features\\Handlers\\CreateDeviceCommandHandler.cs",
+              "RelativeToolTip": "Devices\\Features\\Handlers\\CreateDeviceCommandHandler.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAawBsAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-26T18:30:58.005Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "MongoDbSettings.cs",
+              "DocumentMoniker": "C:\\Users\\redae\\Desktop\\Device_ManagementAPI\\Settings\\MongoDbSettings.cs",
+              "RelativeDocumentMoniker": "Settings\\MongoDbSettings.cs",
+              "ToolTip": "C:\\Users\\redae\\Desktop\\Device_ManagementAPI\\Settings\\MongoDbSettings.cs",
+              "RelativeToolTip": "Settings\\MongoDbSettings.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-26T18:24:43.436Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ValuesController.cs",
+              "DocumentMoniker": "C:\\Users\\redae\\Desktop\\Device_ManagementAPI\\Controllers\\ValuesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ValuesController.cs",
+              "ToolTip": "C:\\Users\\redae\\Desktop\\Device_ManagementAPI\\Controllers\\ValuesController.cs",
+              "RelativeToolTip": "Controllers\\ValuesController.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAAwDoAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-26T18:34:03.275Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\redae\\Desktop\\Device_ManagementAPI\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\redae\\Desktop\\Device_ManagementAPI\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-26T18:34:31.231Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "DeleteDeviceCommand.cs",
+              "DocumentMoniker": "C:\\Users\\redae\\Desktop\\Device_ManagementAPI\\Devices\\Features\\Commands\\DeleteDeviceCommand.cs",
+              "RelativeDocumentMoniker": "Devices\\Features\\Commands\\DeleteDeviceCommand.cs",
+              "ToolTip": "C:\\Users\\redae\\Desktop\\Device_ManagementAPI\\Devices\\Features\\Commands\\DeleteDeviceCommand.cs",
+              "RelativeToolTip": "Devices\\Features\\Commands\\DeleteDeviceCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-26T18:28:56.661Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "UpdateDeviceCommand.cs",
+              "DocumentMoniker": "C:\\Users\\redae\\Desktop\\Device_ManagementAPI\\Devices\\Features\\Commands\\UpdateDeviceCommand.cs",
+              "RelativeDocumentMoniker": "Devices\\Features\\Commands\\UpdateDeviceCommand.cs",
+              "ToolTip": "C:\\Users\\redae\\Desktop\\Device_ManagementAPI\\Devices\\Features\\Commands\\UpdateDeviceCommand.cs",
+              "RelativeToolTip": "Devices\\Features\\Commands\\UpdateDeviceCommand.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAYwBUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-26T18:28:34.63Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "CreateDeviceCommand.cs",
+              "DocumentMoniker": "C:\\Users\\redae\\Desktop\\Device_ManagementAPI\\Devices\\Features\\Commands\\CreateDeviceCommand.cs",
+              "RelativeDocumentMoniker": "Devices\\Features\\Commands\\CreateDeviceCommand.cs",
+              "ToolTip": "C:\\Users\\redae\\Desktop\\Device_ManagementAPI\\Devices\\Features\\Commands\\CreateDeviceCommand.cs",
+              "RelativeToolTip": "Devices\\Features\\Commands\\CreateDeviceCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-26T18:28:10.67Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\redae\\Desktop\\Device_ManagementAPI\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Users\\redae\\Desktop\\Device_ManagementAPI\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-08-26T18:23:57.25Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
