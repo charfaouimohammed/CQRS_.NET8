@@ -5,7 +5,7 @@ namespace Device_ManagementAPI.Models
 {
     public class Device
     {
-        [BsonId]
+      
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; } // This maps to the MongoDB _id field
 
@@ -24,5 +24,20 @@ namespace Device_ManagementAPI.Models
         public string Location { get; set; }
         public string Owner { get; set; }
         public string Status { get; set; }
+
+        //public Device()
+        //{
+            
+        //}
+        //public Device(int deviceId, string deviceName)
+        //{
+        //    this.DeviceID = deviceId;
+        //    this .DeviceName = deviceName;
+        //}
+        //public Device(int deviceId,string deviceName,string Manufacturer, string deviceType,string os,DateTime releaseDate,
+        //    string serialNumber, string warrantyStatus, DateTime purchaseDate, decimal price, string location, string owner, string status)
+        //{
+            
+        //}
     }
 }

@@ -20,7 +20,7 @@ namespace Device_ManagementAPI.Devices.Features.Handlers
 
         public async Task<List<Device>> Handle(GetAllDevicesQuery request, CancellationToken cancellationToken)
         {
-            return await _deviceCollection.Find(_ => true).ToListAsync();
+            return await _deviceCollection.Find(_deviceCollection=> true).ToListAsync();
         }
     }
 

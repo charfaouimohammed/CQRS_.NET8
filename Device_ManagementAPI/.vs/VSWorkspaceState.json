@@ -3,7 +3,10 @@
     "",
     "\\Devices",
     "\\Devices\\Features",
-    "\\Devices\\Features\\Handlers"
+    "\\Devices\\Features\\Handlers",
+    "\\Devices\\UserCommand",
+    "\\Devices\\UserHandler",
+    "\\Devices\\UserRepository"
   ],
   "SelectedNode": "\\Device_ManagementAPI.sln",
   "PreviewInSolutionExplorer": false

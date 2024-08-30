@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\redae\\Desktop\\Device_ManagementAPI\\Device_ManagementAPI.csproj": {}
+    "C:\\Users\\redae\\Desktop\\CQRS_.NET8\\Device_ManagementAPI\\Device_ManagementAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\redae\\Desktop\\Device_ManagementAPI\\Device_ManagementAPI.csproj": {
+    "C:\\Users\\redae\\Desktop\\CQRS_.NET8\\Device_ManagementAPI\\Device_ManagementAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\redae\\Desktop\\Device_ManagementAPI\\Device_ManagementAPI.csproj",
+        "projectUniqueName": "C:\\Users\\redae\\Desktop\\CQRS_.NET8\\Device_ManagementAPI\\Device_ManagementAPI.csproj",
         "projectName": "Device_ManagementAPI",
-        "projectPath": "C:\\Users\\redae\\Desktop\\Device_ManagementAPI\\Device_ManagementAPI.csproj",
+        "projectPath": "C:\\Users\\redae\\Desktop\\CQRS_.NET8\\Device_ManagementAPI\\Device_ManagementAPI.csproj",
         "packagesPath": "C:\\Users\\redae\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\redae\\Desktop\\Device_ManagementAPI\\obj\\",
+        "outputPath": "C:\\Users\\redae\\Desktop\\CQRS_.NET8\\Device_ManagementAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\redae\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -46,6 +46,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "BCrypt.Net-Next": {
+              "target": "Package",
+              "version": "[4.0.3, )"
+            },
             "FluentValidation": {
               "target": "Package",
               "version": "[11.9.2, )"
@@ -53,6 +57,14 @@
             "MediatR": {
               "target": "Package",
               "version": "[12.4.0, )"
+            },
+            "MediatR.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[11.1.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.8, )"
             },
             "Microsoft.Extensions.Options.ConfigurationExtensions": {
               "target": "Package",
@@ -65,6 +77,10 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.4.0, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[8.0.2, )"
             }
           },
           "imports": [
