@@ -1,6 +1,7 @@
 {
   "ExpandedNodes": [
     "",
+    "\\Controllers",
     "\\Devices",
     "\\Devices\\Features",
     "\\Devices\\Features\\Handlers",

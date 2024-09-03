@@ -14,9 +14,19 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-BsonSerializer.RegisterSerializer(new GuidSerializer(MongoDB.Bson.BsonType.String));
-BsonSerializer.RegisterSerializer(new DateTimeSerializer(MongoDB.Bson.BsonType.String));
-BsonSerializer.RegisterSerializer(new DateTimeOffsetSerializer(MongoDB.Bson.BsonType.String));
+var provider =builder.Services.BuildServiceProvider();
+var configuration =provider.GetRequiredService<IConfiguration>();
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowReactApp",
+        builder => builder
+            .WithOrigins("http://localhost:3001") // URL of your React app
+            .AllowAnyHeader()
+            .AllowAnyMethod());
+});
+
+
 
 // Add services to the container.
 builder.Services.Configure<MongoDbSettings>(builder.Configuration.GetSection("MongoDbSettings"));
@@ -45,25 +55,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors("AllowReactApp");
+
 app.UseHttpsRedirection();
 
 // Use authentication and authorization
 app.UseAuthentication();
 app.UseAuthorization();
-
-//app.MapGet("/login", (AuthService service) =>
-//{
-//    var device = new Device(
-//        1,
-//        "bruno.bernardes");
-
-//    return service.Create(device);
-//});
-//app.Map("/test",()=>"OK!")
-//    .RequireAuthorization();
-
-//app.MapGet("/test/device", () => "tech ok!")
-//.RequireAuthorization("tech");
 
 app.MapControllers();
 
