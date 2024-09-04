@@ -22,14 +22,14 @@ namespace Device_ManagementAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Device>>> Get()
+        public async Task<ActionResult<List<Device>>> GetDevices()
         {
             var devices = await _mediator.Send(new GetAllDevicesQuery());
             return Ok(devices);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Device>> Get(int id)
+        public async Task<ActionResult<Device>> GetDevice(int id)
         {
             var device = await _mediator.Send(new GetDeviceByIdQuery { DeviceID = id });
             if (device == null) return NotFound();
@@ -40,11 +40,11 @@ namespace Device_ManagementAPI.Controllers
         public async Task<ActionResult<Device>> Create([FromBody] CreateDeviceCommand command)
         {
             var device = await _mediator.Send(command);
-            return CreatedAtAction(nameof(Get), new { id = device.DeviceID }, device);
+            return CreatedAtAction(nameof(GetDevices), new { id = device.DeviceID }, device);
         }
    
         [HttpPut("{id}")]
-        public async Task<ActionResult<Device>> Update(int id, [FromBody] UpdateDeviceCommand command)
+        public async Task<ActionResult<Device>> UpdateDevice(int id, [FromBody] UpdateDeviceCommand command)
         {
             if (id != command.DeviceID) return BadRequest();
             var updatedDevice = await _mediator.Send(command);
@@ -53,7 +53,7 @@ namespace Device_ManagementAPI.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> DeleteDevice(int id)
         {
             var result = await _mediator.Send(new DeleteDeviceCommand { DeviceID = id });
             if (!result) return NotFound();

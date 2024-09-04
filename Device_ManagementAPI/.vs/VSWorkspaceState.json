@@ -9,6 +9,6 @@
     "\\Devices\\UserHandler",
     "\\Devices\\UserRepository"
   ],
-  "SelectedNode": "\\Device_ManagementAPI.sln",
+  "SelectedNode": "\\Devices\\Features\\Handlers\\GetAllDevicesQueryHandler.cs",
   "PreviewInSolutionExplorer": false
 }

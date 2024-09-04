@@ -56,6 +56,10 @@ const Login = () => {
         {errorMessage && <p className="error-message">{errorMessage}</p>}
         <button type="submit" className="login-button">Login</button>
       </form>
+      {/* Sign Up Link */}
+      <p className="signup-text">
+        Don't have an account? <Link to="/signup">Sign Up</Link>
+      </p>
     </div>
   );
 };

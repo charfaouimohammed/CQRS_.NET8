@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "pJyLjif0owE=",
+  "dgSpecHash": "SppE/FfWRM4=",
   "success": true,
-  "projectFilePath": "C:\\Users\\redae\\Desktop\\CQRS_.NET8\\Device_ManagementAPI\\Device_ManagementAPI.csproj",
+  "projectFilePath": "C:\\Users\\redae\\Desktop\\Device\\CQRS_.NET8\\Device_ManagementAPI\\Device_ManagementAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\redae\\.nuget\\packages\\awssdk.core\\3.7.100.14\\awssdk.core.3.7.100.14.nupkg.sha512",
     "C:\\Users\\redae\\.nuget\\packages\\awssdk.securitytoken\\3.7.100.14\\awssdk.securitytoken.3.7.100.14.nupkg.sha512",

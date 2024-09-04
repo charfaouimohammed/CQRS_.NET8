@@ -20,6 +20,8 @@ namespace Device_ManagementAPI.Devices.UserHandler
             var user = new User
             {
                 Username = request.Username,
+                Firstname=request.Firstname,
+                Lastname=request.Lastname,
                 Password = BCrypt.Net.BCrypt.HashPassword(request.Password) // Hash the password
             };
 

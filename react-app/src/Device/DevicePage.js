@@ -53,7 +53,6 @@ const DevicePage = () => {
         await addDevice(formData);
       }
       setFormData({
-        deviceID:'',
         deviceName: '',
         manufacturer: '',
         deviceType: '',
@@ -114,14 +113,6 @@ const DevicePage = () => {
 
       {/* Device Form */}
       <form onSubmit={handleSave} className="device-form">
-        <input 
-        type="text"
-        name ="DeviceId"
-        placeholder="device ID"
-        value={formData.deviceID}
-        onChange={handleChange}
-        required
-        />
         <input
           type="text"
           name="deviceName"
@@ -241,6 +232,7 @@ const DevicePage = () => {
         <tbody>
           {devices.map((device) => (
             <tr key={device.deviceID}>
+              <td>{device.deviceID}</td>
               <td>{device.deviceName}</td>
               <td>{device.manufacturer}</td>
               <td>{device.deviceType}</td>
@@ -253,6 +245,7 @@ const DevicePage = () => {
               <td>{device.location}</td>
               <td>{device.owner}</td>
               <td>{device.status}</td>
+
               <td>
                 <button onClick={() => handleEdit(device)}>Edit</button>
                 <button onClick={() => handleDelete(device.deviceID)}>

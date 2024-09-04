@@ -62,23 +62,31 @@ namespace Device_ManagementAPI.Controllers
         //    if (id != command.Id)
         //        return BadRequest("User ID mismatch");
 
-        //    var result = await  _mediator.Send(command);
+        //    var result = await _mediator.Send(command);
         //    return result ? NoContent() : NotFound();
         //}
 
-        //[HttpDelete("{id}")]
-        //public async Task<IActionResult> DeleteUser(string id)
-        //{
-        //    var result = await _mediator.Send(new DeleteUserCommand(id));
-        //    return result ? NoContent() : NotFound();
-        //}
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteUser(string id)
+        {
+            var result = await _mediator.Send(new DeleteUserCommand(id));
+            return result ? NoContent() : NotFound();
+        }
 
         [HttpGet]
-        public async Task<ActionResult<List<User>>> Get()
+        public async Task<ActionResult<List<User>>> GetUsers()
         {
             var users = await _mediator.Send(new GetAllUsersQuery());
             return Ok(users);
         }
+
+        //[HttpGet("{username}")]
+        //public async Task<ActionResult<User>> GetUser(string username)
+        //{
+        //    var user = await _mediator.Send(new GetUserByUsernameQuery { Username = username });
+        //    if (user == null) return NotFound();
+        //    return Ok(user);
+        //}
     }
 
 }
