@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { loginUser } from '../services/AuthService'; // Import the login function from the service
 import './Login.css'; // Import CSS for styling
 
@@ -56,10 +56,9 @@ const Login = () => {
         {errorMessage && <p className="error-message">{errorMessage}</p>}
         <button type="submit" className="login-button">Login</button>
       </form>
-      {/* Sign Up Link */}
-      <p className="signup-text">
-        Don't have an account? <Link to="/signup">Sign Up</Link>
-      </p>
+       {/* Sign Up Link */}
+       <p className="signup-text">
+        Don't have an account?<Link to="/signup">Sign Up</Link></p>
     </div>
   );
 };

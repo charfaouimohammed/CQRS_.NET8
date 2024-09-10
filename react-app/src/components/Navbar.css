@@ -1,0 +1,40 @@
+/* src/components/Navbar.css */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; /* Make the navbar take the full width of the page */
+    /* padding: 0 2rem; Adjust side padding as needed */
+    background-color: rgb(6, 42, 143);
+    position: fixed; /* Fixes the navbar to the top of the page */
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Ensures the navbar is always on top */
+  }
+  
+  .navbar-logo a {
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+  }
+  
+  .navbar-links {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+  }
+  
+  .navbar-links a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+  }
+  
+  .navbar-links a:hover {
+    background-color: rgb(102, 160, 185);
+  }
+  /* Ensure page content does not hide behind the fixed navbar */
+body {
+    padding-top: 60px; /* Adjust this value based on the height of your navbar */
+  }

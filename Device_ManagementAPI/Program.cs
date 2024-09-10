@@ -1,4 +1,5 @@
 using Device_ManagementAPI;
+using Device_ManagementAPI.Devices.Features.Repository;
 using Device_ManagementAPI.Devices.Jwt;
 using Device_ManagementAPI.Devices.UserRepository;
 using Device_ManagementAPI.Models;
@@ -14,14 +15,14 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var provider =builder.Services.BuildServiceProvider();
-var configuration =provider.GetRequiredService<IConfiguration>();
+var provider = builder.Services.BuildServiceProvider();
+var configuration = provider.GetRequiredService<IConfiguration>();
 
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowReactApp",
         builder => builder
-            .WithOrigins("http://localhost:3000") // URL of your React app
+            .WithOrigins("http://localhost:3001") // URL of your React app
             .AllowAnyHeader()
             .AllowAnyMethod());
 });
@@ -30,7 +31,13 @@ builder.Services.AddCors(options =>
 
 // Add services to the container.
 builder.Services.Configure<MongoDbSettings>(builder.Configuration.GetSection("MongoDbSettings"));
+
+//dependaci injection
+//// Register the IUserRepository with its implementation
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+// Register the IOrderRepository with its implementation
+builder.Services.AddTransient<IOrderRepository, OrderRepository>();
+// Register the IJwtService with its implementation
 builder.Services.AddScoped<IJwtService, JwtService>();
 
 // Correct way to add MediatR

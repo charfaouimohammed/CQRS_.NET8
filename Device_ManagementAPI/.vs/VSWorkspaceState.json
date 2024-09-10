@@ -4,11 +4,12 @@
     "\\Controllers",
     "\\Devices",
     "\\Devices\\Features",
-    "\\Devices\\Features\\Handlers",
-    "\\Devices\\UserCommand",
-    "\\Devices\\UserHandler",
-    "\\Devices\\UserRepository"
+    "\\Devices\\Features\\OrderCommands",
+    "\\Devices\\Features\\OrderHandler",
+    "\\Devices\\Features\\Queries",
+    "\\Devices\\Features\\Repository",
+    "\\Models"
   ],
-  "SelectedNode": "\\Devices\\Features\\Handlers\\GetAllDevicesQueryHandler.cs",
+  "SelectedNode": "\\Device_ManagementAPI.sln",
   "PreviewInSolutionExplorer": false
 }

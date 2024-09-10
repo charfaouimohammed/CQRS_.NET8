@@ -1,0 +1,17 @@
+/* src/components/OrderPage.css */
+.orders-table {
+    width: 50%;
+    border-collapse: collapse;
+  }
+  
+  .orders-table th,
+  .orders-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .orders-table th {
+    background-color: #f4f4f4;
+    text-align: left;
+  }
+  

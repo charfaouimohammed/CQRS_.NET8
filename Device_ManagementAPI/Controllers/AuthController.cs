@@ -14,6 +14,7 @@ using Device_ManagementAPI.Devices.Features.Queries;
 using Device_ManagementAPI.Devices.Jwt;
 using Device_ManagementAPI.Devices.UserQueris;
 using Microsoft.AspNetCore.Authorization;
+using Device_ManagementAPI.Devices.Features.OrderHandler;
 namespace Device_ManagementAPI.Controllers
 {
 
@@ -79,7 +80,6 @@ namespace Device_ManagementAPI.Controllers
             var users = await _mediator.Send(new GetAllUsersQuery());
             return Ok(users);
         }
-
         //[HttpGet("{username}")]
         //public async Task<ActionResult<User>> GetUser(string username)
         //{

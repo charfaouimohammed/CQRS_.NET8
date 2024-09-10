@@ -20,6 +20,8 @@ export const loginUser = async (username, password) => {
     throw new Error(errorMessage);
   }
 };
+ 
+export const getUsername=()=>localStorage.getItem('username');
 
 // Function to get the token from localStorage
 export const getToken = () => localStorage.getItem('token');
