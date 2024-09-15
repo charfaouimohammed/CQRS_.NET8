@@ -9,14 +9,24 @@ const Login = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate(); // Correctly define the navigate function
 
-
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent form from refreshing the page
 
+    // Basic validation to ensure fields are not empty
+    if (!username.trim() || !password.trim()) {
+      setErrorMessage('Username and password are required.');
+      return;
+    }
+
     try {
       // Call the login service
       const token = await loginUser(username, password);
+
+      // Check if token is received, else throw error
+      if (!token) {
+        throw new Error('Failed to retrieve token. Please try again.');
+      }
 
       // Store token in localStorage
       localStorage.setItem('token', token);
@@ -25,7 +35,7 @@ const Login = () => {
       navigate('/device');
     } catch (error) {
       // Display error message if login fails
-      setErrorMessage(error.message || 'Login failed. Please try again.');
+      setErrorMessage(error.response?.data?.message || 'Login failed. Please try again.');
     }
   };
 
@@ -41,6 +51,7 @@ const Login = () => {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
+            placeholder="Enter your username"
           />
         </div>
         <div className="form-group">
@@ -51,14 +62,18 @@ const Login = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
+            placeholder="Enter your password"
           />
         </div>
         {errorMessage && <p className="error-message">{errorMessage}</p>}
-        <button type="submit" className="login-button">Login</button>
+        <button type="submit" className="login-button">
+          Login
+        </button>
       </form>
-       {/* Sign Up Link */}
-       <p className="signup-text">
-        Don't have an account?<Link to="/signup">Sign Up</Link></p>
+      {/* Sign Up Link */}
+      <p className="signup-text">
+        Don't have an account? <Link to="/signup">Sign Up</Link>
+      </p>
     </div>
   );
 };

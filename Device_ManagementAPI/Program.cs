@@ -1,4 +1,5 @@
 using Device_ManagementAPI;
+using Device_ManagementAPI.Devices.Features.Handlers;
 using Device_ManagementAPI.Devices.Features.Repository;
 using Device_ManagementAPI.Devices.Jwt;
 using Device_ManagementAPI.Devices.UserRepository;
@@ -39,7 +40,7 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddTransient<IOrderRepository, OrderRepository>();
 // Register the IJwtService with its implementation
 builder.Services.AddScoped<IJwtService, JwtService>();
-
+//builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<UpdateOrderCommandHandler>());
 // Correct way to add MediatR
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
 

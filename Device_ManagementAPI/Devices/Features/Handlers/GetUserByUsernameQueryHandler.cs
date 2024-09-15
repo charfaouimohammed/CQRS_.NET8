@@ -4,7 +4,7 @@ using Device_ManagementAPI.Devices.UserRepository;
 using Device_ManagementAPI.Models;
 using MediatR;
 
-namespace Device_ManagementAPI.Devices.UserHandler
+namespace Device_ManagementAPI.Devices.Features.Handlers
 {
     public class GetUserByUsernameQueryHandler : IRequestHandler<GetUserByUsernameQuery, User?>
     {

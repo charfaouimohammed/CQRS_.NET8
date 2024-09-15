@@ -28,15 +28,15 @@ namespace Device_ManagementAPI.Devices.UserRepository
 
             return await _users.Find(_ => true).ToListAsync();
         }
-       
-        //public async Task<User?> GetUserByIdAsync(string id)
-        //{
-        //    if (!ObjectId.TryParse(id, out var objectId))
-        //    {
-        //        return null; // Invalid ID format
-        //    }
-        //    return await _users.Find(u => u.Id == id).FirstOrDefaultAsync();
-        //}
+
+        public async Task<User?> GetUserByIdAsync(string id)
+        {
+            if (!ObjectId.TryParse(id, out var objectId))
+            {
+                return null; // Invalid ID format
+            }
+            return await _users.Find(u => u.Id == id).FirstOrDefaultAsync();
+        }
 
         public async Task CreateUserAsync(User user)
         {
@@ -57,11 +57,6 @@ namespace Device_ManagementAPI.Devices.UserRepository
             }
             var result = await _users.DeleteOneAsync(u => u.Id == id);
             return result.IsAcknowledged && result.DeletedCount > 0;
-        }
-        public async Task<User> GetUserByIdAsync(string userId)
-        {
-            var filter = Builders<User>.Filter.Eq(u => u.Id, userId);
-            return await _users.Find(filter).FirstOrDefaultAsync();
         }
     }
 }

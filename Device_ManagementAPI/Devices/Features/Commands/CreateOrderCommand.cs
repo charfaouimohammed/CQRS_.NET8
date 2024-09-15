@@ -4,10 +4,12 @@ using MediatR;
 
 namespace Device_ManagementAPI.Devices.Features.OrderCommands
 {
-    public class createOrderCommand : IRequest<bool>
+    public class CreateOrderCommand : IRequest<bool>
     {
         public string UserId { get; set; }
         public List<Device> Devices { get; set; }
+        //chek out 
+        public DateTime OrderDate { get; set; }
         public string Comments { get; set; }
     }
 }

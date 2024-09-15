@@ -148,7 +148,7 @@
     "Parameters": [
       {
         "Name": "command",
-        "Type": "Device_ManagementAPI.Devices.Features.OrderCommands.createOrderCommand",
+        "Type": "Device_ManagementAPI.Devices.Features.OrderCommands.CreateOrderCommand",
         "IsRequired": true
       }
     ],
@@ -157,19 +157,19 @@
   {
     "ContainingType": "Device_ManagementAPI.Controllers.OrderController",
     "Method": "UpdateOrder",
-    "RelativePath": "api/Order/{orderId}",
+    "RelativePath": "api/Order/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "orderId",
+        "Name": "id",
         "Type": "System.String",
         "IsRequired": true
       },
       {
-        "Name": "command",
-        "Type": "Device_ManagementAPI.Devices.Features.OrderCommands.UpdateOrderCommad",
+        "Name": "orderDto",
+        "Type": "Device_ManagementAPI.Dto.UpdateOrderDto",
         "IsRequired": true
       }
     ],
@@ -278,6 +278,32 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Device_ManagementAPI.Controllers.UsersController",
+    "Method": "GetByUsername",
+    "RelativePath": "api/Users/{username}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "username",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Device_ManagementAPI.Models.User",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "Device_ManagementAPI.Controllers.UsersController",

@@ -43,19 +43,42 @@ namespace Device_ManagementAPI.Controllers
             var result = await _mediator.Send(command);
             return result ? Ok() : BadRequest();
         }
-
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginUserCommand command)
         {
+            // Retrieve user from database using username
             var user = await _mediator.Send(new GetUserByUsernameQuery(command.Username));
+
+            // Check if user exists and if the password is correct
             if (user == null || !BCrypt.Net.BCrypt.Verify(command.Password, user.Password))
             {
                 return Unauthorized();
             }
 
+            // Generate JWT token
             var token = _jwtService.GenerateToken(user);
-            return Ok(new { Token = token });
+
+            // Return token, user ID, and username
+            return Ok(new
+            {
+                Token = token,
+                IdUser = user.Id,
+                Username = user.Username
+            });
         }
+
+        //[HttpPost("login")]
+        //public async Task<IActionResult> Login([FromBody] LoginUserCommand command)
+        //{
+        //    var user = await _mediator.Send(new GetUserByUsernameQuery(command.Username));
+        //    if (user == null || !BCrypt.Net.BCrypt.Verify(command.Password, user.Password))
+        //    {
+        //        return Unauthorized();
+        //    }
+
+        //    var token = _jwtService.GenerateToken(user);
+        //    return Ok(new { Token = token });
+        //}
 
         //[HttpPut("{id}")]
         //public async Task<IActionResult> UpdateUser(string id, [FromBody] UpdateUserCommand command)
@@ -80,13 +103,21 @@ namespace Device_ManagementAPI.Controllers
             var users = await _mediator.Send(new GetAllUsersQuery());
             return Ok(users);
         }
-        //[HttpGet("{username}")]
-        //public async Task<ActionResult<User>> GetUser(string username)
-        //{
-        //    var user = await _mediator.Send(new GetUserByUsernameQuery { Username = username });
-        //    if (user == null) return NotFound();
-        //    return Ok(user);
-        //}
+        [HttpGet("{username}")]
+        public async Task<ActionResult<User>> GetByUsername(string username)
+        {
+            // Use the GetUserByUsernameQuery to find the user by username
+            var user = await _mediator.Send(new GetUserByUsernameQuery(username));
+
+            // Check if the user exists, if not return NotFound
+            if (user == null)
+            {
+                return NotFound($"User with username '{username}' not found.");
+            }
+
+            // Return the found user
+            return Ok(user);
+        }
     }
 
 }

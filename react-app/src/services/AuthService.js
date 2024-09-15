@@ -1,6 +1,8 @@
 import axios from 'axios';
 
 // Function to send login request and handle token
+// services/AuthService.js
+
 export const loginUser = async (username, password) => {
   try {
     const response = await axios.post('https://localhost:7182/api/Users/login', {
@@ -8,8 +10,13 @@ export const loginUser = async (username, password) => {
       password,
     });
 
-    // Extract the token from the response
-    const { token } = response.data;
+    // Extract the token, idUser, and username from the response
+    const { token, idUser, username: returnedUsername } = response.data;
+
+    // Store the token, idUser, and username in localStorage
+    localStorage.setItem('token', token);
+    localStorage.setItem('idUser', idUser);
+    localStorage.setItem('username', returnedUsername);
 
     // Return the token for further handling
     return token;
@@ -21,6 +28,7 @@ export const loginUser = async (username, password) => {
   }
 };
  
+export const getid=()=>localStorage.getItem('idUser');
 export const getUsername=()=>localStorage.getItem('username');
 
 // Function to get the token from localStorage

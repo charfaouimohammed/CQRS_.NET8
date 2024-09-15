@@ -6,7 +6,7 @@ using System.Formats.Asn1;
 
 namespace Device_ManagementAPI.Devices.Features.OrderHandler
 {
-    public class CreateOrderCommandHandler : IRequestHandler<createOrderCommand, bool>
+    public class CreateOrderCommandHandler : IRequestHandler<CreateOrderCommand, bool>
     {
         private readonly IOrderRepository _orderRepository;
 
@@ -15,14 +15,14 @@ namespace Device_ManagementAPI.Devices.Features.OrderHandler
             _orderRepository = orderRepository;
 
         }
-             public async Task<bool> Handle(createOrderCommand request, CancellationToken cancellationToken)
+             public async Task<bool> Handle(CreateOrderCommand request, CancellationToken cancellationToken)
              {
                   var order = new Order
                 {
                     UserId = request.UserId,
                     Devices = request.Devices,
                     OrderDate = DateTime.Now,
-                    TotalPrice = request.Devices.Sum(d => d.Price),
+                    //TotalPrice = request.Devices.Sum(d => d.Price),
                     Comments = request.Comments
                 };
     

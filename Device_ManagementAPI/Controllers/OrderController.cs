@@ -46,7 +46,7 @@ namespace Device_ManagementAPI.Controllers
 
         // POST: api/Order
         [HttpPost]
-        public async Task<ActionResult> CreateOrder([FromBody] createOrderCommand command)
+        public async Task<ActionResult> CreateOrder([FromBody] CreateOrderCommand command)
         {
             var result = await _mediator.Send(command);
 
@@ -57,22 +57,39 @@ namespace Device_ManagementAPI.Controllers
         }
 
         // PUT: api/Order/{orderId}
-        [HttpPut("{orderId}")]
-        public async Task<ActionResult> UpdateOrder(string orderId, [FromBody] UpdateOrderCommad command)
-        {
-            if (orderId != command.OrderId)
-                return BadRequest("Order ID mismatch.");
+        //[HttpPut("{orderId}")]
+        //public async Task<ActionResult> UpdateOrder(string orderId, [FromBody] UpdateOrderCommad command)
+        //{
+        //    if (orderId != command.OrderId)
+        //        return BadRequest("Order ID mismatch.");
 
+        //    var result = await _mediator.Send(command);
+
+        //    if (!result)
+        //        return NotFound("Order not found or update failed.");
+
+        //    return Ok("Order updated successfully.");
+        //}
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateOrder(string id, [FromBody] UpdateOrderDto orderDto)
+        {
+            if (id != orderDto.Id)
+            {
+                return BadRequest("Order ID mismatch");
+            }
+
+            var command = new UpdateOrderCommand(orderDto);
             var result = await _mediator.Send(command);
 
-            if (!result)
-                return NotFound("Order not found or update failed.");
-
-            return Ok("Order updated successfully.");
+            if (result)
+            {
+                return NoContent(); // Successful update
+            }
+            return NotFound(); // Order not found
         }
 
-        // DELETE: api/Order/{orderId}
-        [HttpDelete("{orderId}")]
+    // DELETE: api/Order/{orderId}
+    [HttpDelete("{orderId}")]
         public async Task<ActionResult> DeleteOrder(string orderId)
         {
             var command = new DeleteOrderCommand { OrderId = orderId };

@@ -19,15 +19,15 @@ namespace Device_ManagementAPI.Models
         [BsonElement("OrderDate")]
         public DateTime OrderDate { get; set; } = DateTime.Now; // Date when the order was placed
 
-        [BsonElement("TotalPrice")]
-        public decimal TotalPrice { get; set; } // Total price of all devices in the order
+        //[BsonElement("TotalPrice")]
+        //public decimal TotalPrice { get; set; } // Total price of all devices in the order
 
-        [BsonElement("OrderStatus")]
-        public string OrderStatus { get; set; } = "Pending"; // Status of the order (e.g., Pending, Completed)
+        //[BsonElement("OrderStatus")]
+        //public string OrderStatus { get; set; } = "Pending"; // Status of the order (e.g., Pending, Completed)
 
         [BsonElement("Comments")]
         public string Comments { get; set; } = string.Empty; // Optional comments or instructions for the order
-        public DateTime DateOfCommand { get; internal set; }
-        public string Departement { get; internal set; }
+        //public DateTime DateOfCommand { get; internal set; }
+        //public string Departement { get; internal set; }
     }
 }

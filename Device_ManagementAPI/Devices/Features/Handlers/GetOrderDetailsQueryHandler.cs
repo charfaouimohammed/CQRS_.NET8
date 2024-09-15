@@ -30,13 +30,13 @@ namespace Device_ManagementAPI.Devices.Features.OrderHandler
                 {
                     OrderId = order.Id,
                     Username = user.Username,
-                    Author = $"{user.Firstname} {user.Lastname}", // Assuming 'Author' is the combination of firstname and lastname
-                    OrderDate = order.OrderDate,
-                    TotalPrice = order.TotalPrice,
-                    OrderStatus = order.OrderStatus,
+                    //Author = $"{user.Firstname} {user.Lastname}", // Assuming 'Author' is the combination of firstname and lastname
+                    //OrderDate = order.OrderDate,
+                    //TotalPrice = order.TotalPrice,
+                    //OrderStatus = order.OrderStatus,
                     Comments = order.Comments,
-                    DateOfCommand = order.DateOfCommand,
-                    Departement = order.Departement
+                    //DateOfCommand = order.DateOfCommand,
+                    //Departement = order.Departement
                 };
 
                 return orderDetails;

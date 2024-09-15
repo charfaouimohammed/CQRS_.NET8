@@ -1,81 +1,116 @@
-// Import necessary modules and components
 import React, { useState, useEffect } from 'react';
+import { Container, Typography, Button } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
-import { Box } from '@mui/material';
-import axios from 'axios';
-import Navbar from './Navbar';
-
-// Define columns for the DataGrid
-const columns = [
-  { field: 'id', headerName: 'Order ID', width: 200 },
-  { field: 'username', headerName: 'Username', width: 150 },
-//   { field: 'author', headerName: 'Author', width: 150 },
-  { field: 'orderDate', headerName: 'Order Date', width: 180 },
-  { field: 'totalPrice', headerName: 'Total Price', width: 150, type: 'number' },
-  { field: 'orderStatus', headerName: 'Order Status', width: 180 },
-  { field: 'comments', headerName: 'Comments', width: 250 },
-//   { field: 'dateOfCommand', headerName: 'Date Of Command', width: 180 },
-  { field: 'departement', headerName: 'Department', width: 150 },
-];
+import { useNavigate } from 'react-router-dom';
+import OrderService from '../services/OrderService';
+import { getid, getUsername } from '../services/AuthService';
 
 const OrderPage = () => {
-  const [orders, setOrders] = useState([]);
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [userId, setUserId] = useState('');
+  const [, setUsername] = useState('');
+  const navigate = useNavigate();
 
-  // Fetch all orders (or their IDs) on component mount
   useEffect(() => {
-    const fetchAllOrders = async () => {
-      try {
-        // Step 1: Fetch all orders or their IDs
-        const response = await axios.get('https://localhost:7182/api/Order'); // Adjust to the correct endpoint
-        const orderSummaries = response.data;
+    const loggedInUserId = getid();
+    const loggedInUsername = getUsername();
 
-        // Step 2: Fetch detailed data for each order
-        const detailedOrders = await Promise.all(
-          orderSummaries.map(async (order) => {
-            const detailsResponse = await axios.get(`https://localhost:7182/api/Order/details/${order.id}`);
-            return detailsResponse.data;
-          })
-        );
+    if (loggedInUserId && loggedInUsername) {
+      setUserId(loggedInUserId);
+      setUsername(loggedInUsername);
 
-        setOrders(detailedOrders);
-      } catch (error) {
-        console.error('Error fetching order details:', error);
-      }
-    };
+      const fetchOrders = async () => {
+        try {
+          const ordersData = await OrderService.getOrdersByUser(loggedInUserId);
 
-    fetchAllOrders();
+          // Add an incrementing order number (index) to each order
+          const combinedData = ordersData.map((order, index) => ({
+            id: order.id, // Keep the original id as a hidden reference
+            orderNumber: index + 1, // Incremental order number starting from 1
+            orderDate: order.orderDate,
+            comments: order.comments,
+          }));
+
+          setData(combinedData);
+        } catch (error) {
+          console.error('Error fetching orders:', error);
+        } finally {
+          setLoading(false);
+        }
+      };
+
+      fetchOrders();
+    } else {
+      console.error('User ID or Username not found.');
+      setLoading(false);
+    }
   }, []);
 
-  // Map fetched order details to DataGrid rows
-  const rows = orders.map((order, index) => ({
-    id: order.id || `${index}`, // Ensure a unique id for each row; fallback to index if id is missing
-    username: order.username || 'Unknown',
-    // author: `${order.firstname || ''} ${order.lastname || ''}`,
-    orderDate: order.orderDate ? new Date(order.orderDate).toLocaleDateString() : 'N/A',
-    totalPrice: order.totalPrice || 0,
-    orderStatus: order.orderStatus || 'Unknown',
-    comments: order.comments || 'No comments',
-    // dateOfCommand: order.dateOfCommand ? new Date(order.dateOfCommand).toLocaleDateString() : 'N/A',
-    departement: order.departement || 'Unknown',
-  }));
+  const handleEdit = (row) => {
+    navigate(`/edit/${row.id}`, { state: { order: row } });
+  };
+
+  const handleDelete = async (orderId) => {
+    try {
+      await OrderService.deleteOrder(orderId);
+      setData((prevData) => prevData.filter((row) => row.id !== orderId));
+    } catch (error) {
+      console.error('Error deleting order:', error);
+    }
+  };
+
+  const columns = [
+    { field: 'orderNumber', headerName: 'Order ID', width: 150 }, // Use orderNumber instead of id
+    {
+      field: 'orderDate',
+      headerName: 'Order Date',
+      width: 200,
+      type: 'date',
+      valueGetter: (params) =>
+        params.value ? new Date(params.value).toLocaleDateString() : '',
+    },
+    { field: 'comments', headerName: 'Comments', width: 300 },
+    {
+      field: 'actions',
+      headerName: 'Actions',
+      width: 200,
+      renderCell: (params) => (
+        <div>
+          <Button
+            variant="contained"
+            color="primary"
+            style={{ marginRight: 10 }}
+            onClick={() => handleEdit(params.row)}
+          >
+            Edit
+          </Button>
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={() => handleDelete(params.row.id)}
+          >
+            Delete
+          </Button>
+        </div>
+      ),
+    },
+  ];
+
+  if (loading) return <Typography>Loading...</Typography>;
+  if (data.length === 0) return <Typography>No data found for this user.</Typography>;
 
   return (
-    
-    <div>
-        <Navbar />
-      <h1>Order Details</h1>
-      <Box sx={{ height: 600, width: '100%' }}>
-        <DataGrid
-          rows={rows}
-          columns={columns}
-          pageSize={10}
-          rowsPerPageOptions={[10, 25, 50]}
-          checkboxSelection
-          disableSelectionOnClick
-          getRowId={(row) => row.id} // Use id as the row identifier
-        />
-      </Box>
-    </div>
+    <Container>
+      <Typography variant="h4" gutterBottom>
+        Orders for User ID: {userId}
+      </Typography>
+
+      <div style={{ height: 500, width: '100%' }}>
+        <Typography variant="h5">Orders</Typography>
+        <DataGrid rows={data} columns={columns} pageSize={10} />
+      </div>
+    </Container>
   );
 };
 

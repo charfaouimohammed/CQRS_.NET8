@@ -4,10 +4,11 @@
     "\\Controllers",
     "\\Devices",
     "\\Devices\\Features",
-    "\\Devices\\Features\\OrderCommands",
-    "\\Devices\\Features\\OrderHandler",
+    "\\Devices\\Features\\Commands",
+    "\\Devices\\Features\\Handlers",
     "\\Devices\\Features\\Queries",
     "\\Devices\\Features\\Repository",
+    "\\Dto",
     "\\Models"
   ],
   "SelectedNode": "\\Device_ManagementAPI.sln",

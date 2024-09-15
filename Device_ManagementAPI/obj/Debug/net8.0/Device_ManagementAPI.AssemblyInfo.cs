@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Device_ManagementAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+30f77d31d1ffb2835ad93b61b43fde8afbdcfd19")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fffd01bd6b0c6f1b01a3e383dacfa091b2f8121c")]
 [assembly: System.Reflection.AssemblyProductAttribute("Device_ManagementAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Device_ManagementAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
