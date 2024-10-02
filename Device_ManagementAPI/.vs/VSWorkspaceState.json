@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Controllers",
+    "\\Devices",
+    "\\Devices\\Features",
+    "\\Devices\\Features\\Commands",
+    "\\Devices\\Features\\Handlers",
+    "\\Devices\\Features\\Queries",
+    "\\Devices\\Features\\Repository",
+    "\\Dto",
+    "\\Models"
+  ],
+  "SelectedNode": "\\Device_ManagementAPI.sln",
+  "PreviewInSolutionExplorer": false
+}
