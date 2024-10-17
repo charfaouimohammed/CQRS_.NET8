@@ -1,5 +1,6 @@
 ﻿using Device_ManagementAPI.Devices.Features.Commands;
 using Device_ManagementAPI.Devices.Features.Queries;
+using Device_ManagementAPI.Dto;
 using Device_ManagementAPI.Models;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -22,10 +23,30 @@ namespace Device_ManagementAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Device>>> GetDevices()
+        public async Task<ActionResult<IEnumerable<GetAllDevicesDto>>> GetDevices()
         {
             var devices = await _mediator.Send(new GetAllDevicesQuery());
-            return Ok(devices);
+
+            var myDevices = devices.Select(x => new GetAllDevicesDto
+            {
+                Id = x.Id,
+                DeviceID = x.DeviceID,
+                DeviceName = x.DeviceName,
+                FullName = x.DeviceName +' ' +x.Owner,
+                DeviceType = x.DeviceType,
+                Location = x.Location,
+                Manufacturer = x.Manufacturer,
+                OS = x.OS,
+                Owner = x.Owner,
+                Price = x.Price,
+                SerialNumber = x.SerialNumber,
+                Status = x.Status,
+                WarrantyStatus = x.WarrantyStatus,
+                PurchaseDate = x.PurchaseDate.ToShortDateString(),
+                ReleaseDate = x.ReleaseDate.ToShortDateString()
+            });
+
+            return Ok(myDevices);
         }
 
         [HttpGet("{id}")]

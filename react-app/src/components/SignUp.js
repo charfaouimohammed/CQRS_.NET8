@@ -3,7 +3,7 @@ import axios from 'axios';
 import{ useNavigate ,Link} from 'react-router-dom';
 import Swal from 'sweetalert2'; // Import SweetAlert2
 import './Login.css'; // Import CSS for styling
-
+import logo from '../assec/logoV.png'; // Import your logo
 
 function SingUp() 
 { 
@@ -66,6 +66,7 @@ function SingUp()
       }
   }
   return (
+    <div className="main_body">
     <div className="login-container">
       <form>
       <h1>Register page</h1>
@@ -85,11 +86,12 @@ function SingUp()
       <label htmlFor="firstname">password:</label>
       <input type="password" onChange={(e)=>setPassword(e.target.value)} className="form-control" placeholder="password"/>
       </div>
-      <button onClick={register} className="btn btn-primary">sing Up</button>
+      <button onClick={register} className="login-button">sing Up</button>
       </form>
       <p className="back-to-login">
         Already have an account? <Link to="/Login">Back to Login</Link>
       </p>
+    </div>
     </div>
   )
 

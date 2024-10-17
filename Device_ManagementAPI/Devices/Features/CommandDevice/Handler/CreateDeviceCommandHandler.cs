@@ -5,7 +5,7 @@ using MediatR;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 
-namespace Device_ManagementAPI.Devices.Features.Handlers
+namespace Device_ManagementAPI.Devices.Features.CommandDevice.Handler
 {
     public class CreateDeviceCommandHandler : IRequestHandler<CreateDeviceCommand, Device>
     {

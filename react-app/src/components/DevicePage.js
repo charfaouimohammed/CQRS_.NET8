@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { DataGrid } from '@mui/x-data-grid';
 import {
   Dialog,
   DialogActions,
@@ -8,23 +7,28 @@ import {
   DialogContentText,
   DialogTitle,
   Button,
-} from '@mui/material'; // Import MUI Dialog components
+  IconButton,
+} from '@mui/material';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import InfoIcon from '@mui/icons-material/Info'; // Import Info Icon
 import { getDevices, deleteDevice } from '../services/deviceService';
-// import { getToken, getUsername } from '../services/AuthService'; // Import AuthService methods
 import './DevicePage.css';
 import Navbar from './Navbar';
 
 const DevicePage = () => {
-  const [devices, setDevices] = useState([]);;
+  const [devices, setDevices] = useState([]);
   const [error, setError] = useState('');
-  const [selectedDevice, setSelectedDevice] = useState(null); // State to hold the selected device for deletion
-  const [open, setOpen] = useState(false); // State to control the dialog open/close
+  const [selectedDevice, setSelectedDevice] = useState(null);
+  const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
+  const [openInfoDialog, setOpenInfoDialog] = useState(false); // State for info dialog
   const navigate = useNavigate();
   const [deviceCount, setDeviceCount] = useState({});
 
   useEffect(() => {
     fetchDevices();
-  });
+  }); // Add empty dependency array to prevent infinite calls
 
   const fetchDevices = async () => {
     try {
@@ -48,7 +52,7 @@ const DevicePage = () => {
     try {
       await deleteDevice(id);
       fetchDevices();
-      handleClose(); // Close the dialog after successful deletion
+      handleCloseDeleteDialog(); // Close the delete dialog after successful deletion
     } catch (err) {
       setError('Failed to delete device');
     }
@@ -63,92 +67,25 @@ const DevicePage = () => {
     navigate('/AddOrderForm', { state: { device, idUser } });
   };
 
-  // const formatDate = (dateString) => {
-  //   const date = new Date(dateString);
-  //   const day = String(date.getDate()).padStart(2, '0');
-  //   const month = String(date.getMonth() + 1).padStart(2, '0');
-  //   const year = date.getFullYear();
-  //   return `${day}/${month}/${year}`;
-  // };
-
-  // Open confirmation dialog
-  const handleOpen = (device) => {
+  const handleOpenDeleteDialog = (device) => {
     setSelectedDevice(device);
-    setOpen(true);
+    setOpenDeleteDialog(true);
   };
 
-  // Close confirmation dialog
-  const handleClose = () => {
-    setOpen(false);
+  const handleCloseDeleteDialog = () => {
+    setOpenDeleteDialog(false);
     setSelectedDevice(null);
   };
 
-  // Define columns for the DataGrid
-  const columns = [
-    { field: 'deviceID', headerName: 'ID', width: 90, sortable: true },
-    { field: 'deviceName', headerName: 'Device Name', width: 150, sortable: true },
-    { field: 'manufacturer', headerName: 'Manufacturer', width: 150, sortable: true },
-    { field: 'deviceType', headerName: 'Device Type', width: 150, sortable: true },
-    { field: 'os', headerName: 'OS', width: 120, sortable: true },
-    {
-      field: 'releaseDate',
-      headerName: 'Release Date',
-      width: 150,
-   
-      sortable: true,
-    },
-    { field: 'serialNumber', headerName: 'Serial Number', width: 150, sortable: true },
-    { field: 'warrantyStatus', headerName: 'Warranty Status', width: 150, sortable: true },
-    {
-      field: 'purchaseDate',
-      headerName: 'Purchase Date',
-      width: 150,
-  
-      sortable: true,
-    },
-    { field: 'price', headerName: 'Price', width: 100, sortable: true },
-    { field: 'location', headerName: 'Location', width: 150, sortable: true },
-    {
-      field: 'owner',
-      headerName: 'Owner',
-      width: 150,
-      sortable: true,
-      renderCell: (params) => (
-        <div>
-          {params.value} ({deviceCount[params.value] || 0})
-        </div>
-      ),
-    },
-    { field: 'status', headerName: 'Status', width: 120, sortable: true },
-    {
-      field: 'actions',
-      headerName: 'Actions',
-      width: 300, // Increase width to fit all buttons
-      renderCell: (params) => (
-        <>
-          <Button variant="contained" color="primary" onClick={() => handleEdit(params.row)}>
-            Edit
-          </Button>
-          <Button
-            variant="contained"
-            color="secondary"
-            onClick={() => handleOpen(params.row)}
-            style={{ marginLeft: 8 }}
-          >
-            Delete
-          </Button>
-          <Button
-            variant="contained"
-            color="info" // You can choose another color or style
-            onClick={() => handleOrder(params.row)}
-            style={{ marginLeft: 8 }}
-          >
-            Order
-          </Button>
-        </>
-      ),
-    },
-  ];
+  const handleOpenInfoDialog = (device) => {
+    setSelectedDevice(device);
+    setOpenInfoDialog(true);
+  };
+
+  const handleCloseInfoDialog = () => {
+    setOpenInfoDialog(false);
+    setSelectedDevice(null);
+  };
 
   return (
     <div className="device-page-container">
@@ -156,22 +93,52 @@ const DevicePage = () => {
       <h1>Devices</h1>
       {error && <p className="error-message">{error}</p>}
 
-      {/* MUI DataGrid */}
-      <div style={{ height: 600, width: '100%' }}>
-        <DataGrid
-          rows={devices}
-          columns={columns}
-          getRowId={(row) => row.deviceID}
-          pageSize={10}
-          rowsPerPageOptions={[5, 10, 20]}
-          disableSelectionOnClick
-          checkboxSelection
-          sortingOrder={['asc', 'desc']}
-        />
-      </div>
+      {/* HTML Table */}
+      <table className="devices-table">
+        <thead>
+          <tr>
+            <td>deviceID</td>
+              <td>deviceName</td>
+              <td>manufacturer</td>
+              <td>deviceType</td>
+              <td>os</td>
+              <td>owner</td>
+              <td>action</td>
+          </tr>
+        </thead>
+        <tbody>
+          {devices.map((device) => (
+            <tr key={device.deviceID}>
+              <td>{device.deviceID}</td>
+              <td>{device.deviceName}</td>
+              <td>{device.manufacturer}</td>
+              <td>{device.deviceType}</td>
+              <td>{device.os}</td>
+              <td>
+                {device.owner} ({deviceCount[device.owner] || 0})
+              </td>
+              <td>
+                <IconButton color="primary" onClick={() => handleEdit(device)}>
+                  <EditIcon />
+                </IconButton>
+                <IconButton color="secondary" onClick={() => handleOpenDeleteDialog(device)}>
+                  <DeleteIcon />
+                </IconButton>
+                <IconButton color="default" onClick={() => handleOrder(device)}>
+                  <AddShoppingCartIcon />
+                </IconButton>
+                {/* Info Icon Button */}
+                <IconButton color="info" onClick={() => handleOpenInfoDialog(device)}>
+                  <InfoIcon />
+                </IconButton>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
 
-      {/* Confirmation Dialog */}
-      <Dialog open={open} onClose={handleClose}>
+      {/* Confirmation Dialog for Deletion */}
+      <Dialog open={openDeleteDialog} onClose={handleCloseDeleteDialog}>
         <DialogTitle>Confirm Deletion</DialogTitle>
         <DialogContent>
           <DialogContentText>
@@ -180,15 +147,38 @@ const DevicePage = () => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color="primary">
+          <Button onClick={handleCloseDeleteDialog} color="primary">
             Cancel
           </Button>
-          <Button
-            onClick={() => handleDelete(selectedDevice?.deviceID)}
-            color="secondary"
-            autoFocus
-          >
+          <Button onClick={() => handleDelete(selectedDevice?.deviceID)} color="secondary" autoFocus>
             Delete
+          </Button>
+        </DialogActions>
+      </Dialog>
+
+      {/* Info Dialog to display all information about the device */}
+      <Dialog open={openInfoDialog} onClose={handleCloseInfoDialog}>
+        <DialogTitle>Device Information</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            <strong>Device ID:</strong> {selectedDevice?.deviceID}<br />
+            <strong>Device Name:</strong> {selectedDevice?.deviceName}<br />
+            <strong>Manufacturer:</strong> {selectedDevice?.manufacturer}<br />
+            <strong>Device Type:</strong> {selectedDevice?.deviceType}<br />
+            <strong>OS:</strong> {selectedDevice?.os}<br />
+            <strong>Release Date:</strong> {selectedDevice?.releaseDate}<br />
+            <strong>Serial Number:</strong> {selectedDevice?.serialNumber}<br />
+            <strong>Warranty Status:</strong> {selectedDevice?.warrantyStatus}<br />
+            <strong>Purchase Date:</strong> {selectedDevice?.purchaseDate}<br />
+            <strong>Price:</strong> {selectedDevice?.price}<br />
+            <strong>Location:</strong> {selectedDevice?.location}<br />
+            <strong>Owner:</strong> {selectedDevice?.owner}<br />
+            <strong>Status:</strong> {selectedDevice?.status}<br />
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseInfoDialog} color="primary">
+            Close
           </Button>
         </DialogActions>
       </Dialog>

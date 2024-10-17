@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Container, TextField, Button, Typography } from '@mui/material';
 import { useLocation, useNavigate } from 'react-router-dom';
 import OrderService from '../services/OrderService';
+import Navbar from './Navbar';
 
 const EditOrderForm = () => {
   const location = useLocation();
@@ -15,10 +16,14 @@ const EditOrderForm = () => {
 
   useEffect(() => {
     if (order) {
+      console.log('Order object:', order); // Log to check the format of orderDate
+      const formattedOrderDate = order.orderDate
+        ? new Date(order.orderDate).toISOString().slice(0, 10) // Format date for input
+        : '';
       setOrderData({
         id: order.id,
-        orderDate: new Date(order.orderDate).toISOString().slice(0, 10), // Format date for input
-        comments: order.comments,
+        orderDate: formattedOrderDate,
+        comments: order.comments || '',
       });
     }
   }, [order]);
@@ -36,7 +41,7 @@ const EditOrderForm = () => {
         orderDate: new Date(orderData.orderDate).toISOString(),
         comments: orderData.comments,
       });
-      navigate('/orders'); // Redirect to orders page after update
+      navigate('/Device'); // Redirect to orders page after update
     } catch (error) {
       console.error('Error updating order:', error);
     }
@@ -44,6 +49,9 @@ const EditOrderForm = () => {
 
   return (
     <Container>
+      <div>
+      <Navbar />
+    </div>
       <Typography variant="h4" gutterBottom>
         Edit Order
       </Typography>

@@ -7,7 +7,6 @@ using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Extensions.Configuration;
 using System.IdentityModel.Tokens.Jwt;
-using Device_ManagementAPI.Devices.UserCommand;
 using MediatR;
 using Device_ManagementAPI.Devices.Features.Commands;
 using Device_ManagementAPI.Devices.Features.Queries;
@@ -15,6 +14,7 @@ using Device_ManagementAPI.Devices.Jwt;
 using Device_ManagementAPI.Devices.UserQueris;
 using Microsoft.AspNetCore.Authorization;
 using Device_ManagementAPI.Devices.Features.OrderHandler;
+using Device_ManagementAPI.Devices.Features.CommandUser;
 namespace Device_ManagementAPI.Controllers
 {
 

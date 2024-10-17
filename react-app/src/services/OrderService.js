@@ -21,6 +21,7 @@ const createOrder = async (orderData) => {
   const response = await axios.post(API_URL, orderData);
   return response.data;
 };
+
 const updateOrder = async (orderId, orderDto) => {
   try {
     console.log('Updating order with payload:', orderDto); // Log the payload
@@ -36,11 +37,13 @@ const deleteOrder = async (orderId) => {
   return response.data;
 };
 
-
-export default {
+// Assign object to a variable before exporting as default
+const OrderService = {
   getAllOrders,
   getOrdersByUser,
   createOrder,
   updateOrder,
   deleteOrder,
 };
+
+export default OrderService;

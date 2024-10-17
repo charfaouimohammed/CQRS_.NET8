@@ -1,15 +1,33 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Typography, Button } from '@mui/material';
-import { DataGrid } from '@mui/x-data-grid';
-import { useNavigate } from 'react-router-dom';
+import {
+  Container,
+  Typography,
+  IconButton,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  Button,
+} from '@mui/material';
 import OrderService from '../services/OrderService';
 import { getid, getUsername } from '../services/AuthService';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import InfoIcon from '@mui/icons-material/Info';
+import Navbar from './Navbar';
+import { useNavigate } from 'react-router-dom';
+import './OrderPage.css';
 
 const OrderPage = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [userId, setUserId] = useState('');
-  const [, setUsername] = useState('');
+  const [, setUserId] = useState('');
+  const [username, setUsername] = useState('');
+  const [openDialog, setOpenDialog] = useState(false);
+  const [selectedOrderId, setSelectedOrderId] = useState(null);
+  const [selectedOrder, setSelectedOrder] = useState(null); // State for selected order details
+  const [openInfoModal, setOpenInfoModal] = useState(false); // State for info modal visibility
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -23,12 +41,9 @@ const OrderPage = () => {
       const fetchOrders = async () => {
         try {
           const ordersData = await OrderService.getOrdersByUser(loggedInUserId);
-
-          // Add an incrementing order number (index) to each order
           const combinedData = ordersData.map((order, index) => ({
-            id: order.id, // Keep the original id as a hidden reference
-            orderNumber: index + 1, // Incremental order number starting from 1
-            orderDate: order.orderDate,
+            id: order.id,
+            orderNumber: index + 1,
             comments: order.comments,
           }));
 
@@ -51,65 +66,119 @@ const OrderPage = () => {
     navigate(`/edit/${row.id}`, { state: { order: row } });
   };
 
-  const handleDelete = async (orderId) => {
+  const handleDelete = async () => {
     try {
-      await OrderService.deleteOrder(orderId);
-      setData((prevData) => prevData.filter((row) => row.id !== orderId));
+      if (selectedOrderId) {
+        await OrderService.deleteOrder(selectedOrderId);
+        setData((prevData) => prevData.filter((row) => row.id !== selectedOrderId));
+      }
+      setOpenDialog(false);
     } catch (error) {
       console.error('Error deleting order:', error);
     }
   };
 
-  const columns = [
-    { field: 'orderNumber', headerName: 'Order ID', width: 150 }, // Use orderNumber instead of id
-    {
-      field: 'orderDate',
-      headerName: 'Order Date',
-      width: 200,
-      type: 'date',
-      valueGetter: (params) =>
-        params.value ? new Date(params.value).toLocaleDateString() : '',
-    },
-    { field: 'comments', headerName: 'Comments', width: 300 },
-    {
-      field: 'actions',
-      headerName: 'Actions',
-      width: 200,
-      renderCell: (params) => (
-        <div>
-          <Button
-            variant="contained"
-            color="primary"
-            style={{ marginRight: 10 }}
-            onClick={() => handleEdit(params.row)}
-          >
-            Edit
-          </Button>
-          <Button
-            variant="contained"
-            color="secondary"
-            onClick={() => handleDelete(params.row.id)}
-          >
-            Delete
-          </Button>
-        </div>
-      ),
-    },
-  ];
+  const handleOpenDialog = (orderId) => {
+    setSelectedOrderId(orderId);
+    setOpenDialog(true);
+  };
+
+  const handleCloseDialog = () => {
+    setOpenDialog(false);
+  };
+
+  const handleOpenInfoModal = (order) => {
+    setSelectedOrder(order);
+    setOpenInfoModal(true);
+  };
+
+  const handleCloseInfoModal = () => {
+    setOpenInfoModal(false);
+  };
 
   if (loading) return <Typography>Loading...</Typography>;
   if (data.length === 0) return <Typography>No data found for this user.</Typography>;
 
   return (
     <Container>
-      <Typography variant="h4" gutterBottom>
-        Orders for User ID: {userId}
+      <div>
+        <Navbar />
+      </div>
+      <Typography style={{ margin: 30 }} variant="h4" gutterBottom>
+        Orders for {username}
       </Typography>
 
-      <div style={{ height: 500, width: '100%' }}>
-        <Typography variant="h5">Orders</Typography>
-        <DataGrid rows={data} columns={columns} pageSize={10} />
-      </div>
+      <table className="orders-table">
+        <thead>
+          <tr>
+            <th>Order ID</th>
+            <th>Comments</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((row) => (
+            <tr key={row.id}>
+              <td>{row.orderNumber}</td>
+              <td>{row.comments}</td>
+              <td>
+                <IconButton color="primary" onClick={() => handleEdit(row)}>
+                  <EditIcon />
+                </IconButton>
+                <IconButton color="secondary" onClick={() => handleOpenDialog(row.id)}>
+                  <DeleteIcon />
+                </IconButton>
+                <IconButton color="info" onClick={() => handleOpenInfoModal(row)}>
+                  <InfoIcon />
+                </IconButton>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      {/* Confirmation Dialog */}
+      <Dialog open={openDialog} onClose={handleCloseDialog}>
+        <DialogTitle>{"Confirm Delete"}</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Are you sure you want to delete this order? This action cannot be undone.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseDialog} color="primary">
+            Cancel
+          </Button>
+          <Button onClick={handleDelete} color="secondary">
+            Delete
+          </Button>
+        </DialogActions>
+      </Dialog>
+
+      {/* Order Info Modal */}
+      <Dialog open={openInfoModal} onClose={handleCloseInfoModal}>
+        <DialogTitle>Order Details</DialogTitle>
+        <DialogContent>
+          {selectedOrder ? (
+            <div>
+              <Typography variant="body1">
+                <strong>Order ID:</strong> {selectedOrder.orderNumber}
+              </Typography>
+              <Typography variant="body1">
+                <strong>Comments:</strong> {selectedOrder.comments}
+              </Typography>
+              {/* Add more fields as needed */}
+            </div>
+          ) : (
+            <Typography>No details available.</Typography>
+          )}
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseInfoModal} color="primary">
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Container>
   );
 };

@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Device_ManagementAPI.Devices.UserCommand
+namespace Device_ManagementAPI.Devices.Features.CommandUser
 {
     public class DeleteUserCommand : IRequest<bool>
     {

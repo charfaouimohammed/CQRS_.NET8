@@ -2,7 +2,7 @@
 using Device_ManagementAPI.Models;
 using MediatR;
 
-namespace Device_ManagementAPI.Devices.Features.OrderCommands
+namespace Device_ManagementAPI.Devices.Features.CommandOrder
 {
     public class CreateOrderCommand : IRequest<bool>
     {

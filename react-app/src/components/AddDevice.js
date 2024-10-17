@@ -1,14 +1,15 @@
-// src/components/AddDevice.js
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { getDevices, addDevice, updateDevice } from '../services/deviceService';
+import { Button, TextField } from '@mui/material';
+import SaveIcon from '@mui/icons-material/Save';
+import CancelIcon from '@mui/icons-material/Cancel';
 import './AddDevice.css';
-import Navbar from './Navbar';
 
 const AddDevice = () => {
   const [, setDevices] = useState([]);
   const [formData, setFormData] = useState({
-    deviceID:'',
+    deviceID: '',
     deviceName: '',
     manufacturer: '',
     deviceType: '',
@@ -64,14 +65,12 @@ const AddDevice = () => {
     e.preventDefault();
     try {
       if (editingDevice) {
-        // Update existing device
         await updateDevice(formData.deviceID, formData);
       } else {
-        // Add new device
         await addDevice(formData);
       }
       setFormData({
-        deviceID:'',
+        deviceID: '',
         deviceName: '',
         manufacturer: '',
         deviceType: '',
@@ -85,7 +84,7 @@ const AddDevice = () => {
         owner: '',
         status: '',
       });
-      navigate('/device'); // Redirect to the DevicePage after saving
+      navigate('/device');
     } catch (err) {
       setError('Failed to save device');
     }
@@ -98,106 +97,134 @@ const AddDevice = () => {
 
   return (
     <div className="addDev">
-      <Navbar />
       <h1>{editingDevice ? 'Edit Device' : 'Add Device'}</h1>
       {error && <p className="error-message">{error}</p>}
 
-      {/* Device Form */}
       <form onSubmit={handleSave} className="device-form">
-        <input
-          type="text"
+        <TextField
+          label="Device Name"
           name="deviceName"
-          placeholder="Device Name"
           value={formData.deviceName}
           onChange={handleChange}
+          fullWidth
+          margin="normal"
           required
         />
-        <input
-          type="text"
+        <TextField
+          label="Manufacturer"
           name="manufacturer"
-          placeholder="Manufacturer"
           value={formData.manufacturer}
           onChange={handleChange}
+          fullWidth
+          margin="normal"
         />
-        <input
-          type="text"
+        <TextField
+          label="Device Type"
           name="deviceType"
-          placeholder="Device Type"
           value={formData.deviceType}
           onChange={handleChange}
+          fullWidth
+          margin="normal"
         />
-        <input
-          type="text"
+        <TextField
+          label="Operating System"
           name="os"
-          placeholder="Operating System"
           value={formData.os}
           onChange={handleChange}
+          fullWidth
+          margin="normal"
         />
-        <input
-          type="date"
+        <TextField
+          label="Release Date"
           name="releaseDate"
-          placeholder="Release Date"
+          type="date"
+          InputLabelProps={{ shrink: true }}
           value={formData.releaseDate}
           onChange={handleChange}
+          fullWidth
+          margin="normal"
         />
-        <input
-          type="text"
+        <TextField
+          label="Serial Number"
           name="serialNumber"
-          placeholder="Serial Number"
           value={formData.serialNumber}
           onChange={handleChange}
+          fullWidth
+          margin="normal"
         />
-        <input
-          type="text"
+        <TextField
+          label="Warranty Status"
           name="warrantyStatus"
-          placeholder="Warranty Status"
           value={formData.warrantyStatus}
           onChange={handleChange}
+          fullWidth
+          margin="normal"
         />
-        <input
-          type="date"
+        <TextField
+          label="Purchase Date"
           name="purchaseDate"
-          placeholder="Purchase Date"
+          type="date"
+          InputLabelProps={{ shrink: true }}
           value={formData.purchaseDate}
           onChange={handleChange}
+          fullWidth
+          margin="normal"
         />
-        <input
-          type="number"
+        <TextField
+          label="Price"
           name="price"
-          placeholder="Price"
+          type="number"
           value={formData.price}
           onChange={handleChange}
-          step="0.01"
+          fullWidth
+          margin="normal"
+          InputProps={{ step: '0.01' }}
         />
-        <input
-          type="text"
+        <TextField
+          label="Location"
           name="location"
-          placeholder="Location"
           value={formData.location}
           onChange={handleChange}
+          fullWidth
+          margin="normal"
         />
-        <input
-          type="text"
+        <TextField
+          label="Owner"
           name="owner"
-          placeholder="Owner"
           value={formData.owner}
           onChange={handleChange}
+          fullWidth
+          margin="normal"
         />
-        <input
-          type="text"
+        <TextField
+          label="Status"
           name="status"
-          placeholder="Status"
           value={formData.status}
           onChange={handleChange}
+          fullWidth
+          margin="normal"
         />
-        
-        <button type="submit">
+
+        <Button
+          type="submit"
+          variant="contained"
+          color="success"
+          startIcon={<SaveIcon />}
+          sx={{ mt: 2 }}
+        >
           {editingDevice ? 'Update Device' : 'Add Device'}
-        </button>
+        </Button>
         {editingDevice && (
-          <button type="button" onClick={() => navigate('/device')}>
+          <Button
+            type="button"
+            variant="outlined"
+            color="error"
+            startIcon={<CancelIcon />}
+            sx={{ mt: 2, ml: 2 }}
+            onClick={() => navigate('/device')}
+          >
             Cancel
-          </button>
+          </Button>
         )}
       </form>
     </div>

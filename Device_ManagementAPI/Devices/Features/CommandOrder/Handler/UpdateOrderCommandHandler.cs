@@ -2,9 +2,9 @@
 using MediatR;
 using Device_ManagementAPI.Devices.Features.Repository;
 using Device_ManagementAPI.Dto;
-using Device_ManagementAPI.Devices.Features.OrderCommands;
+using Device_ManagementAPI.Devices.Features.CommandOrder;
 
-namespace Device_ManagementAPI.Devices.Features.Handlers
+namespace Device_ManagementAPI.Devices.Features.CommandOrder.Handler
 {
     public class UpdateOrderCommandHandler : IRequestHandler<UpdateOrderCommand, bool>
     {

@@ -1,11 +1,11 @@
-﻿using Device_ManagementAPI.Devices.Features.Repository;
-using Device_ManagementAPI.Devices.UserCommand;
+﻿using Device_ManagementAPI.Devices.Features.CommandUser;
+using Device_ManagementAPI.Devices.Features.Repository;
 using Device_ManagementAPI.Devices.UserQueris;
 using Device_ManagementAPI.Devices.UserRepository;
 using Device_ManagementAPI.Models;
 using MediatR;
 
-namespace Device_ManagementAPI.Devices.UserHandler
+namespace Device_ManagementAPI.Devices.Features.CommandUser.Handler
 {
     public class DeleteUserCommandHandler : IRequestHandler<DeleteUserCommand, bool>
     {
@@ -18,8 +18,8 @@ namespace Device_ManagementAPI.Devices.UserHandler
 
         public async Task<bool> Handle(DeleteUserCommand request, CancellationToken cancellationToken)
         {
-            var result= await _userRepository.DeleteUserAsync(request.Id);
-            
+            var result = await _userRepository.DeleteUserAsync(request.Id);
+
             return result;
         }
     }

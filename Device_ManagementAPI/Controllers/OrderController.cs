@@ -1,4 +1,4 @@
-﻿using Device_ManagementAPI.Devices.Features.OrderCommands;
+﻿using Device_ManagementAPI.Devices.Features.CommandOrder;
 using Device_ManagementAPI.Devices.Features.OrderHandler;
 using Device_ManagementAPI.Devices.Features.Queries;
 using Device_ManagementAPI.Devices.Features.Repository;

@@ -5,7 +5,6 @@ import { logoutUser } from '../services/AuthService';
 import LogoutIcon from '@mui/icons-material/Logout'; // Import Logout Icon
 import PersonIcon from '@mui/icons-material/Person'; // Import Person Icon for the username
 
-
 const Navbar = () => {
   const navigate = useNavigate();
   const [username, setUsername] = useState('User');
@@ -45,24 +44,22 @@ const Navbar = () => {
       </div>
       <ul className={`navbar-links ${isOpen ? 'active' : ''}`}>
         <li>
-          <Link to="/Device" onClick={() => setIsOpen(false)}>Devices List</Link>
+          <Link to="/Device" onClick={() => setIsOpen(false)}>DevicesList</Link>
         </li>
         <li>
-          <Link to={`/OrderPage?userId=${userId}`} onClick={() => setIsOpen(false)}>Orders List</Link>
+          <Link to={`/OrderPage?userId=${userId}`} onClick={() => setIsOpen(false)}>OrdersList</Link>
         </li>
         <li>
-          <Link to="/AddDevice" onClick={() => setIsOpen(false)}>Add Device</Link>
+          <Link to="/AddDevice" onClick={() => setIsOpen(false)}>AddDevice</Link>
         </li>
         <li className="navbar-username">
-          <PersonIcon id="usericon" fontSize="medium"/> {/* User Icon */}
-          <span className="username-text">{username}</span> {/* Username displayed */}
+        
+           {/* User Icon */}
+          <span className="username-text">welcome: <PersonIcon id="usericon" fontSize="medium"/>{username}</span> {/* Username displayed */}
         </li>
         <li className="logout" id="logoutbtn">
           {/* Use Logout Icon for logout */}
-          <button
-            onClick={handleLogout}
-            
-          >
+          <button onClick={handleLogout}>
             <LogoutIcon fontSize="medium" /> {/* Logout icon */}
           </button>
         </li>

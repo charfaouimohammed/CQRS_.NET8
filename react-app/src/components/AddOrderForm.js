@@ -93,7 +93,7 @@ const AddOrderForm = () => {
       // Use createOrder method from OrderService
       await OrderService.createOrder(orderData);
       console.log("Order created successfully");
-      navigate('/OrderConfirmation'); // Redirect to confirmation page or elsewhere
+      navigate('/Device'); // Redirect to confirmation page or elsewhere
     } catch (error) {
       console.error('Error creating order:', error.response?.data || error.message);
     }
@@ -128,7 +128,7 @@ const AddOrderForm = () => {
           </Grid>
           <Grid item xs={12} md={6}>
             <TextField
-              type="datetime-local"
+              // type="datetime-local"
               label="DateOrder"
               name="dateorder"
               value={formData.orderDate}

@@ -1,17 +1,27 @@
+// src/components/Login.js
+
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { loginUser } from '../services/AuthService'; // Import the login function from the service
 import './Login.css'; // Import CSS for styling
+ import logo from '../assec/logoV.png'; // Import your logo
 
 const Login = () => {
+  // State variables for form inputs and feedback
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  const navigate = useNavigate(); // Correctly define the navigate function
+  const [isLoading, setIsLoading] = useState(false); // Loading state
+  const [showPassword, setShowPassword] = useState(false); // Password visibility toggle
 
-  // Handle form submission
+  const navigate = useNavigate(); // Hook for navigation
+
+  /**
+   * Handles the form submission for logging in.
+   * @param {Event} e - The form submission event.
+   */
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent form from refreshing the page
+    e.preventDefault(); // Prevent default form submission behavior
 
     // Basic validation to ensure fields are not empty
     if (!username.trim() || !password.trim()) {
@@ -19,61 +29,87 @@ const Login = () => {
       return;
     }
 
+    setIsLoading(true); // Start loading
+    setErrorMessage(''); // Clear previous error messages
+
     try {
-      // Call the login service
+      // Call the login service to authenticate the user
       const token = await loginUser(username, password);
 
-      // Check if token is received, else throw error
-      if (!token) {
-        throw new Error('Failed to retrieve token. Please try again.');
-      }
-
-      // Store token in localStorage
+      // Store token in localStorage (consider more secure storage methods in production)
       localStorage.setItem('token', token);
 
       // Redirect to the Device page after successful login
       navigate('/device');
     } catch (error) {
       // Display error message if login fails
-      setErrorMessage(error.response?.data?.message || 'Login failed. Please try again.');
+      setErrorMessage(error.message || 'Login failed. Please try again.');
+    } finally {
+      setIsLoading(false); // End loading
     }
   };
 
   return (
-    <div className="login-container">
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="username">Username:</label>
-          <input
-            type="text"
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-            placeholder="Enter your username"
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            placeholder="Enter your password"
-          />
-        </div>
-        {errorMessage && <p className="error-message">{errorMessage}</p>}
-        <button type="submit" className="login-button">
-          Login
-        </button>
-      </form>
-      {/* Sign Up Link */}
-      <p className="signup-text">
-        Don't have an account? <Link to="/signup">Sign Up</Link>
-      </p>
+    <div className="main_body">
+    
+      <div className="login-container">
+        {/* Logo */}
+        <img src={logo} alt="Company Logo" className="logo" />
+
+        <h2>Login</h2>
+        <form onSubmit={handleSubmit} className="login-form">
+          {/* Username Field */}
+          <div className="form-group">
+            <label htmlFor="username">Username:</label>
+            <input
+              type="text"
+              id="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+              placeholder="Enter your username"
+              aria-label="Username"
+            />
+          </div>
+
+          {/* Password Field with Visibility Toggle */}
+          <div className="form-group">
+            <label htmlFor="password">Password:</label>
+            <div className="password-input-container">
+              <input
+                type={showPassword ? 'text' : 'password'}
+                id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                placeholder="Enter your password"
+                aria-label="Password"
+              />
+              <button
+                type="button"
+                className="toggle-password"
+                onClick={() => setShowPassword((prev) => !prev)}
+                aria-label={showPassword ? 'Hide password' : 'Show password'}
+              >
+                {showPassword ? 'Hide' : 'Show'}
+              </button>
+            </div>
+          </div>
+
+          {/* Error Message */}
+          {errorMessage && <p className="error-message">{errorMessage}</p>}
+
+          {/* Submit Button */}
+          <button type="submit" className="login-button" disabled={isLoading}>
+            {isLoading ? 'Logging in...' : 'Login'}
+          </button>
+        </form>
+
+        {/* Sign Up Link */}
+        <p className="signup-text">
+          Don't have an account? <Link to="/signup">Sign Up</Link>
+        </p>
+      </div>
     </div>
   );
 };
